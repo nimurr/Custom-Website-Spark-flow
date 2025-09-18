@@ -37,7 +37,7 @@ const ContractorHeader = () => {
     ]
     const disabledDates = availableDate.map(item => moment(item.date, 'DD/MM/YYYY'));
     const disabledDateHandler = (current) => {
-        // Disable dates that are in the disabledDates array
+        
         return disabledDates.some(date => current.isSame(date, 'day'));
     };
 
