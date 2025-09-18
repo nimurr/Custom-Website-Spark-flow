@@ -1,5 +1,7 @@
 'use client';
 import icons from '@/icons/icon';
+import { DatePicker } from 'antd';
+import moment from 'moment';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -10,6 +12,34 @@ const ContractorHeader = () => {
         setShowUser(!showUser);
         console.log('show user');
     }
+
+    const availableDate = [
+        {
+            id: 1,
+            date: '15/09/2025'
+        },
+        {
+            id: 2,
+            date: '17/09/2025'
+        },
+        {
+            id: 3,
+            date: '20/09/2025'
+        },
+        {
+            id: 4,
+            date: '21/09/2025'
+        },
+        {
+            id: 5,
+            date: '28/09/2025'
+        },
+    ]
+    const disabledDates = availableDate.map(item => moment(item.date, 'DD/MM/YYYY'));
+    const disabledDateHandler = (current) => {
+        // Disable dates that are in the disabledDates array
+        return disabledDates.some(date => current.isSame(date, 'day'));
+    };
 
     return (
         <header className=' flex flex-wrap gap-5 items-center justify-center md:justify-between py-5'>
@@ -23,12 +53,15 @@ const ContractorHeader = () => {
                 </div>
             </div>
             <div className='flex items-center gap-5'>
-                <select className='px-4 py-2 border border-[#203f9a] rounded-md ring-[#203f9a] focus:border-[#203f9a] outline-[#203f9a]' name="category" id="">
-                    <option value="category1">Category 1</option>
-                    <option value="category2">Category 2</option>
-                    <option value="category3">Category 3</option>
-                    <option value="category3">Category 4</option>
-                </select>
+
+                <div>
+                    <DatePicker
+                        size='large'
+                        disabledDate={disabledDateHandler}
+                        format="DD/MM/YYYY"
+                    />
+                </div>
+
                 <Link href="/contractor/message" className='cursor-pointer px-2 relative text-white py-2 border bg-[#203f9a] rounded-md'>
                     {icons.message}
                     <span className='absolute top-2 right-2 bg-red-600 w-2 h-2 rounded-full'></span>
