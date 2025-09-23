@@ -10,6 +10,7 @@ const Page = () => {
     const [companyName, setCompanyName] = useState("Toto Company");
     const [profilePicture, setProfilePicture] = useState("https://randomuser.me/api/portraits/men/61.jpg");
     const [businessLicense, setBusinessLicense] = useState("https://divisionalconsultancy.com/wp-content/uploads/2024/04/Tr-702x1024.jpg");
+    const [insurance, setInsurance] = useState("https://www.healthyhorns.utexas.edu/uhs/images/insurance-card4.png");
 
     // Function to toggle edit mode
     const handleEditClick = () => {
@@ -38,6 +39,17 @@ const Page = () => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setBusinessLicense(reader.result); // Set uploaded image
+            };
+            reader.readAsDataURL(file); // Read the image file
+        }
+    };
+
+    const handleInsuranceChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setInsurance(reader.result); // Set uploaded image
             };
             reader.readAsDataURL(file); // Read the image file
         }
@@ -105,6 +117,28 @@ const Page = () => {
 
                             </div>
                         </div>
+
+                        <div>
+                            <h3 className="font-semibold mb-1">Insurance Document</h3>
+                            <div className="w-36 h-40 rounded-lg border border-gray-100 p-2 bg-white">
+                                <img
+                                    src={insurance}
+                                    alt="insurance Document"
+                                    className="w-full h-full rounded-lg object-cover"
+                                />
+                                {isEditing && (
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleInsuranceChange}
+                                        className="mt-2  w-full border border-gray-300 rounded-md p-1 text-sm"
+                                    />
+                                )}
+
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
