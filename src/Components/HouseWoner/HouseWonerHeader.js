@@ -23,12 +23,12 @@ const HouseWonerHeader = () => {
                 </div>
             </div>
             <div className='flex items-center gap-5'>
-                <select className='px-4 py-2 border border-[#1f3d95] rounded-md ring-[#1f3d95] focus:border-[#1f3d95] outline-[#1f3d95]' name="category" id="">
+                {/* <select className='px-4 py-2 border border-[#1f3d95] rounded-md ring-[#1f3d95] focus:border-[#1f3d95] outline-[#1f3d95]' name="category" id="">
                     <option value="category1">Category 1</option>
                     <option value="category2">Category 2</option>
                     <option value="category3">Category 3</option>
                     <option value="category3">Category 4</option>
-                </select>
+                </select> */}
                 <Link href="/house-woner/message" className='cursor-pointer px-2 relative text-white py-2 border bg-[#1f3d95] rounded-md'>
                     {icons.message}
                     <span className='absolute top-2 right-2 bg-red-600 w-2 h-2 rounded-full'></span>
